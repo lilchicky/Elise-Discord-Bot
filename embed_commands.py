@@ -44,5 +44,4 @@ class EmbedCommands(commands.Cog):
 async def setup(bot):
     await bot.add_cog(EmbedCommands(bot))
     bot.tree.add_command(embed_group)
-    bot.tree.add_command(embed_edit_group)
     print("Embed Commands were loaded!")
