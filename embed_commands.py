@@ -1,5 +1,4 @@
 import discord
-import bot_main
 from discord.ext import commands
 from discord import app_commands
 
@@ -36,3 +35,14 @@ async def embed_edit_title(interaction: discord.Interaction, message_id: str, ne
 
     except discord.NotFound:
         await interaction.response.send_message("I couldn't find a message with that ID!", ephemeral = True)
+
+class EmbedCommands(commands.Cog):
+
+    def __init__(self, bot):
+        self.bot = bot
+
+async def setup(bot):
+    await bot.add_cog(EmbedCommands(bot))
+    bot.tree.add_command(embed_group)
+    bot.tree.add_command(embed_edit_group)
+    print("Embed Commands were loaded!")
